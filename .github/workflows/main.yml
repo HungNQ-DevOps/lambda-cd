@@ -17,24 +17,22 @@ jobs:
         uses: antifree/json-to-variables@HEAD
         with:
           filename: 'test.json'
-          prefix: test
+          prefix: env
       - name: Show output
-        run: echo "The time was ${{ env.dev }}
-    #   
-    #     uses: actions/checkout@v1
-    #   - name: deploy lambda 01
-    #     uses: appleboy/lambda-action@master
-    #     with:
-    #       aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-    #       aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-    #       aws_region: ${{ secrets.AWS_REGION }}
-    #       function_name: lambda-cd
-    #       source: function.py
-    #   - name: deploy lambda 02
-    #     uses: appleboy/lambda-action@master
-    #     with:
-    #       aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-    #       aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-    #       aws_region: ${{ secrets.AWS_REGION }}
-    #       function_name: lambda-cd-02
-    #       source: function-02.py
+        run: echo "The time was ${{ env.test_dev_lambda1_name }}
+      - name: deploy lambda 01
+        uses: appleboy/lambda-action@master
+        with:
+          aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws_region: ${{ secrets.AWS_REGION }}
+          function_name: ${{ env.env_dev_lambda1_name }}
+          source: ${{ env.env_dev_lambda1_source }}
+      - name: deploy lambda 02
+        uses: appleboy/lambda-action@master
+        with:
+          aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws_region: ${{ secrets.AWS_REGION }}
+          function_name: ${{ env.env_dev_lambda2_name }}
+          source: ${{ env.env_dev_lambda2_source }}
