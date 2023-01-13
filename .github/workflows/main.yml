@@ -8,18 +8,21 @@ on:
 
 env:
   AWS_REGION: us-east-1
-  lambdaMatrix: |
-    - lambda-cd: "function.py"
-    - lambda-cd-02: "function-02.py"
 
 jobs:
   deploy_source:
     name: deploy lambda from source
     runs-on: ubuntu-latest
     steps:
-      - name: echo 123
-        run: |
-          echo ${{ env.lambdaMatrix }}
+      - name: JSON to variables
+        uses: rgarcia-phi/json-to-variables@v1.1.0
+        with:
+          filename: 'lambda.json'
+          prefix: lambda
+          masked: true
+      - name: show output
+        run:
+          echo ${{ env }}
     # steps:
     #   - name: checkout source code
     #     uses: actions/checkout@v1
