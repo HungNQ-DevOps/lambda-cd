@@ -14,7 +14,7 @@ jobs:
     steps:
       - name: checkout source code
         uses: actions/checkout@v1
-      - name: default deploy
+      - name: deploy function
         uses: appleboy/lambda-action@master
         with:
           aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
@@ -22,7 +22,7 @@ jobs:
           aws_region: ${{ secrets.AWS_REGION }}
           function_name: lambda-cd
           source: function.py
-            - name: default deploy
+      - name: deploy function-02
         uses: appleboy/lambda-action@master
         with:
           aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
