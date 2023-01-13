@@ -15,7 +15,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        lambda-name: [lambda-cd, lambda-cd-02]
+        lambda-name: [lambda-cd]
     steps:
       - name: checkout source code
         uses: actions/checkout@v1
