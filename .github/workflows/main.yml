@@ -29,7 +29,7 @@ jobs:
       - name: deploy lambda 01
         uses: appleboy/lambda-action@master
         with:
-          function_name: "${{ env.json_lambda"1_name }}
+          function_name: ${{ env.json_lambda"1_name }}
           source: ${{ env.json_lambda1_source }}
       - name: deploy lambda 02
         uses: appleboy/lambda-action@master
