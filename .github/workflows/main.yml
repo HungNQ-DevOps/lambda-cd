@@ -12,14 +12,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: checkout source code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v1
       - name: JSON to variables
         uses: antifree/json-to-variables@HEAD
         with:
           filename: 'test.json'
           prefix: env
       - name: Show output
-        run: echo "The time was ${{ env.env_dev_lambda1_name }}""
+        run: echo "The time was ${{ env.env_dev_lambda1_name }}"
       - name: deploy lambda 01
         uses: appleboy/lambda-action@master
         with:
