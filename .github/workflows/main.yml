@@ -33,4 +33,4 @@ jobs:
         uses: appleboy/lambda-action@master
         with:
           function_name: ${{ matrix.lambda-name }}
-          source: ${{ matrix.lambda-name }}
+          source: ${{ matrix.lambda-name }}.py
