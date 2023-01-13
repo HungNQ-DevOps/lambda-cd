@@ -20,25 +20,19 @@ jobs:
         uses: antifree/json-to-variables@HEAD
         with:
           filename: ${{ env.ENV_FILE }}
-      # - name: deploy lambda 01
-      #   uses: appleboy/lambda-action@master
-      #   with:
-      #     aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-      #     aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-      #     aws_region: ${{ secrets.AWS_REGION }}
-      #     function_name: "${{ env.json_lambda"1_name }}
-      #     source: ${{ env.json_lambda1_source }}
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v1
         with:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: ${{ secrets.AWS_REGION }}
+      - name: deploy lambda 01
+        uses: appleboy/lambda-action@master
+        with:
+          function_name: "${{ env.json_lambda"1_name }}
+          source: ${{ env.json_lambda1_source }}
       - name: deploy lambda 02
         uses: appleboy/lambda-action@master
         with:
-          # aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          # aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          # aws_region: ${{ secrets.AWS_REGION }}
           function_name: ${{ env.json_lambda2_name }}
           source: ${{ env.json_lambda2_source }}
