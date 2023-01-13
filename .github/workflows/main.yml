@@ -15,14 +15,10 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        lambda-name: [lambda-cd]
+        lambda-name: [lambda-cd, lambda-cd-02]
     steps:
       - name: checkout source code
         uses: actions/checkout@v1
-      # - name: JSON to variables
-      #   uses: antifree/json-to-variables@HEAD
-      #   with:
-      #     filename: ${{ env.ENV_FILE }}
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v1
         with:
