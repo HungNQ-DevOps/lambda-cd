@@ -19,7 +19,6 @@ jobs:
       steps:
         - name: echo 123
           run: |
-            # echo ${{ env.lambdaMatrix }}
             echo ${{ env.AWS_REGION }}
     # steps:
     #   - name: checkout source code
