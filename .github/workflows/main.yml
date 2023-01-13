@@ -16,10 +16,11 @@ jobs:
   deploy_source:
     name: deploy lambda from source
     runs-on: ubuntu-latest
-      - name: echo 123
-        run: |
-          # echo ${{ env.lambdaMatrix }}
-          echo ${{ env.AWS_REGION }}
+      steps:
+        - name: echo 123
+          run: |
+            # echo ${{ env.lambdaMatrix }}
+            echo ${{ env.AWS_REGION }}
     # steps:
     #   - name: checkout source code
     #     uses: actions/checkout@v1
