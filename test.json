@@ -1,13 +1,16 @@
 {
-    "value": "value",
-    "array": [
-        {
-            "value": "value 0"
+    "dev": {
+        "lambda1": {
+            "name": "lambda-cd",
+            "source": "function.py"
         },
-        "value 1"
-    ],
-    "obj": {
-        "value1": "value1",
-        "value2": "value2"
+        "lambda2": {
+            "name": "lambda-cd-02",
+            "source": "function-02.py"
+        }
+    },
+    "prod": {
+        "lambda1": "",
+        "lambda2": ""
     }
 }
