@@ -21,7 +21,7 @@ jobs:
           aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws_region: ${{ secrets.AWS_REGION }}
           function_name: lambda-cd
-          source: test/function-02.py
+          source: function.py
       - name: deploy lambda 02
         uses: appleboy/lambda-action@master
         with:
