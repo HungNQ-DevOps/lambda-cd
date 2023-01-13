@@ -16,6 +16,10 @@ jobs:
   deploy_source:
     name: deploy lambda from source
     runs-on: ubuntu-latest
+      - name: echo 123
+        run: |
+          echo ${{ env.lambdaMatrix }}
+          echo ${{ env.AWS_REGION }}
     # steps:
     #   - name: checkout source code
     #     uses: actions/checkout@v1
@@ -35,5 +39,3 @@ jobs:
     #       aws_region: ${{ secrets.AWS_REGION }}
     #       function_name: lambda-cd-02
     #       source: function-02.py
-        - name: echo
-          run: echo ${{ env.lambdaMatrix }}
