@@ -8,9 +8,9 @@ on:
 
 env:
   AWS_REGION: us-east-1
-  lambdaMatrix: |
-    - lambda-cd: "function.py"
-    - lambda-cd-02: "function-02.py"
+  # lambdaMatrix: |
+  #   - lambda-cd: "function.py"
+  #   - lambda-cd-02: "function-02.py"
 
 jobs:
   deploy_source:
@@ -18,7 +18,7 @@ jobs:
     runs-on: ubuntu-latest
       - name: echo 123
         run: |
-          echo ${{ env.lambdaMatrix }}
+          # echo ${{ env.lambdaMatrix }}
           echo ${{ env.AWS_REGION }}
     # steps:
     #   - name: checkout source code
