@@ -19,7 +19,7 @@ jobs:
           filename: 'test.json'
           prefix: env
       - name: Show output
-        run: echo "The time was ${{ env.test_dev_lambda1_name }}
+        run: echo "The time was ${{ env.env_dev_lambda1_name }}""
       - name: deploy lambda 01
         uses: appleboy/lambda-action@master
         with:
@@ -28,11 +28,11 @@ jobs:
           aws_region: ${{ secrets.AWS_REGION }}
           function_name: ${{ env.env_dev_lambda1_name }}
           source: ${{ env.env_dev_lambda1_source }}
-      - name: deploy lambda 02
-        uses: appleboy/lambda-action@master
-        with:
-          aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws_region: ${{ secrets.AWS_REGION }}
-          function_name: ${{ env.env_dev_lambda2_name }}
-          source: ${{ env.env_dev_lambda2_source }}
+      # - name: deploy lambda 02
+      #   uses: appleboy/lambda-action@master
+      #   with:
+      #     aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+      #     aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      #     aws_region: ${{ secrets.AWS_REGION }}
+      #     function_name: ${{ env.env_dev_lambda2_name }}
+      #     source: ${{ env.env_dev_lambda2_source }}
