@@ -5,6 +5,9 @@ on:
   push:
     branches:
       - main
+env:
+  ENV_FILE: "lambda-dev.json"
+
 
 jobs:
   deploy_source:
@@ -16,21 +19,20 @@ jobs:
       - name: JSON to variables
         uses: antifree/json-to-variables@HEAD
         with:
-          filename: 'test.json'
-          prefix: env
+          filename: ${{ env.ENV_FILE }}
       - name: deploy lambda 01
         uses: appleboy/lambda-action@master
         with:
           aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws_region: ${{ secrets.AWS_REGION }}
-          function_name: ${{ env.env_dev_lambda1_name }}
-          source: ${{ env.env_dev_lambda1_source }}
+          function_name: ${{ env.lambda1_name }}
+          source: ${{ env.lambda1_source }}
       - name: deploy lambda 02
         uses: appleboy/lambda-action@master
         with:
           aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws_region: ${{ secrets.AWS_REGION }}
-          function_name: ${{ env.env_dev_lambda2_name }}
-          source: ${{ env.env_dev_lambda2_source }}
+          function_name: ${{ env.lambda2_name }}
+          source: ${{ env.lambda2_source }}

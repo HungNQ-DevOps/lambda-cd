@@ -1,0 +1,10 @@
+{
+    "lambda1": {
+        "name": "lambda-cd",
+        "source": "function.py"
+    },
+    "lambda2": {
+        "name": "lambda-cd-02",
+        "source": "function-02.py"
+    }
+}
