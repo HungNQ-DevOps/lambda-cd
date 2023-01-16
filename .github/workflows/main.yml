@@ -5,9 +5,6 @@ on:
   push:
     branches:
       - main
-env:
-  ENV_FILE: "lambda-dev.json"
-
 
 jobs:
   deploy_source:
@@ -19,6 +16,11 @@ jobs:
     steps:
       - name: checkout source code
         uses: actions/checkout@v1
+      - name: Zip files 
+      - uses: vimtor/action-zip@v1
+        with:
+          files: dist/${{ matrix.lambda-name }}
+          dest: ${{ matrix.lambda-name }}.zip
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v1
         with:
@@ -29,4 +31,4 @@ jobs:
         uses: appleboy/lambda-action@master
         with:
           function_name: ${{ matrix.lambda-name }}
-          source: ${{ matrix.lambda-name }}.py
+          source: ${{ matrix.lambda-name }}.zip
